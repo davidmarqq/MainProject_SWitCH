@@ -1,0 +1,168 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Book {
+    - item:Item
+    - listing:Listing
+
+}
+
+class Magazine {
+    - item:Item
+    - listing:Listing
+}
+
+class User {
+}
+
+class Item {
+    -itemDescription:BibliographicalData
+    - condition:Condition
+    - weight:int
+    - pictures[]: Picture
+    - 3dDimensions: Dimension
+    - typeOfBinding:TypeOfBinding
+    - edition:String
+
+}
+
+class BibliographicalData {
+    - title1:Title
+    - author[]:Author
+    - language:Language
+    - code:Code
+    - publisher:Publisher
+    - publicationDate:LocalDate
+    - genre[]:Genre
+    - numberOfPages:int
+    - chunksOfText: String
+
+}
+
+class Listing {
+    /'- item:Item'/
+    - price:double
+    - shortDescription:String
+    - listingTitle:String
+    - saleType:SaleType
+    - seller:User
+}
+
+Listing --- Cart
+
+class Cart {
+    - itemsList[]:Listing
+    - buyer:User
+}
+
+Listing --- Auction
+
+class Auction {
+    - auctionedItem:Listing
+    - buyOutPrice:double
+    - initialDate:LocalTimeDate
+    - finalDate:LocalTimeDate
+    - initialPrice:double
+    - bidHistory[]:Bid
+    
+    /' currentBidder:User... sim ou não????'/
+}
+
+class Bid {
+    - bidder:User
+    - value:double
+}
+
+class Transaction {
+    - seller:User
+    - buyer:User
+    -
+
+}
+
+class LogisticsServices {
+}
+
+class SupportService {
+}
+
+class Community{
+}
+
+
+
+class Author {
+}
+
+class Dimension {
+    - length:int
+    - height:int
+    - width:int
+}
+
+enum Language {
+    PORTUGUESE
+    ENGLISH
+    SPANISH
+}
+
+class Code {
+    - isbn10:String
+    - isbn13:String
+    - issn:String
+}
+
+class Publisher {
+    - name:String
+    - vatNumber:String
+    - address:Address
+    - contact:Contact
+
+}
+
+class Address {
+    - street:String
+    - number:String
+    - zipCode:String
+    - country:Country
+}
+
+enum Country {
+    PORTUGAL
+    SPAIN
+    FRANCE
+    GERMANY
+}
+
+class Contact {
+    - phoneNum:String
+    - extension:Extension
+    - email:Email /'review'/
+}
+
+class Email {
+    - userName:String
+    - domain:String
+}
+
+enum Genre {
+    ADVENTURE
+    ROMANCE
+    FICTION
+}
+
+enum TypeOfBinding {
+    HARDBACK
+    PAPERBACK
+
+}
+
+enum SaleType {
+    DIRECT_SALE
+    AUCTION
+}
+
+
+
+
+@enduml

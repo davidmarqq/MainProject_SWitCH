@@ -1,10 +1,59 @@
-@startuml
+@startuml Doo
 'https://plantuml.com/class-diagram
+
+/' ========= '/
+Listing --- Auction
+Listing ..> SaleType
+
+/' ========= '/
+Book --- Listing
+Magazine --- Listing
+
+/' ========= '/
+BibliographicalData ..> Language 
+BibliographicalData ..> Genre 
+BibliographicalData -- Author
+BibliographicalData -- Publisher
+BibliographicalData -- Code
+
+
+
+/' ========= '/
+Item -- BibliographicalData
+Item -- Picture
+Item -- Dimension
+Item ..> TypeOfBinding
+Item ..> Condition
+
+
+/' ========= '/
+Cart "1" o-- "0..*" Listing
+Cart "1" --> "1" User : buyer
+
+/' ========= '/
+Transaction --> Listing
+Transaction --> User : seller
+Transaction --> User : buyer
+
+/' ========= '/
+User --> Profile
+
+
+
+/' ========= '/
+Contact "1" *-- "1" Email
+
+
+Address ..> Country
+
+/' ========= '/
+Publisher -- Address
+Publisher -- Contact
+
 
 class Book {
     - item:Item
     - listing:Listing
-
 }
 
 class Magazine {
@@ -13,14 +62,29 @@ class Magazine {
 }
 
 class User {
+    - userName:String
+    - contact:Contact
+    - profile:Profile
 }
+
+class Profile {
+    name:String
+    country:Country
+    birthday:LocalDate
+}
+
+
+class Author {
+    - profile:Profile
+}
+
 
 class Item {
     -itemDescription:BibliographicalData
     - condition:Condition
     - weight:int
     - pictures[]: Picture
-    - 3dDimensions: Dimension
+    - dimensions: Dimension
     - typeOfBinding:TypeOfBinding
     - edition:String
 
@@ -32,7 +96,7 @@ class BibliographicalData {
     - language:Language
     - code:Code
     - publisher:Publisher
-    - publicationDate:LocalDate
+    - publicationDate:LocalDateTime
     - genre[]:Genre
     - numberOfPages:int
     - chunksOfText: String
@@ -48,20 +112,19 @@ class Listing {
     - seller:User
 }
 
-Listing --- Cart
+
 
 class Cart {
     - itemsList[]:Listing
     - buyer:User
 }
 
-Listing --- Auction
 
 class Auction {
     - auctionedItem:Listing
     - buyOutPrice:double
-    - initialDate:LocalTimeDate
-    - finalDate:LocalTimeDate
+    - initialDate:LocalDateTime
+    - finalDate:LocalDateTime
     - initialPrice:double
     - bidHistory[]:Bid
     
@@ -74,11 +137,12 @@ class Bid {
 }
 
 class Transaction {
-    - seller:User
+    - sellers:List<User>
     - buyer:User
-    -
+    - :
 
 }
+
 
 class LogisticsServices {
 }
@@ -87,11 +151,6 @@ class SupportService {
 }
 
 class Community{
-}
-
-
-
-class Author {
 }
 
 class Dimension {
@@ -117,7 +176,6 @@ class Publisher {
     - vatNumber:String
     - address:Address
     - contact:Contact
-
 }
 
 class Address {
@@ -162,7 +220,16 @@ enum SaleType {
     AUCTION
 }
 
+enum Extension {
 
+}
 
+enum Condition {
+    NEW
+    LIKE_NEW
+    VERY_GOOD
+    GOOD
+    ACCEPTABLE
+}
 
 @enduml

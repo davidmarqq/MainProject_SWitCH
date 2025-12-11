@@ -1,12 +1,5 @@
 # OO Analysis
 
-**Pontos a ponderar:
-Um user pode recusar ficar com um item caso ganhe a auction?
-No glossário, referenciamos termos que irão surgir a seguir (exemplo, see "Bid" below, ou "ver também X")
-Revisar Cart
-Revisar Community quando ("Se tivermos", diz o Diogo) tivermos mais informações
-Revisar Item and ItemDescription
-
 ##  Glossary
 
 ### Auction:

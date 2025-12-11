@@ -41,11 +41,13 @@ Cart "1" --> "0..1" Transaction : may lead to
 /' ========= '/
 Transaction "1" --> "1..*" User : seller
 Transaction "  1" --> "  1" User : buyer
+Transaction "1" --> "1" LogisticsServices : handled by
 
 Auction "1" --> "1" Transaction : may lead to
 
 /' ========= '/
 Bid "*" *-- "1" Auction : has
+Bid "1" --> "1" User : bidder
 
 /' ========= '/
 User "0..1" --> "1" Profile : has
@@ -60,8 +62,13 @@ Address "1" ..> "1" Country : has
 /' ========= '/
 Publisher "1" -> "1" Contact : has
 
-/' ========= '/
 
+/' ========= '/
+Community "1" --> "*" User : is shaped by
+
+/' ========= '/
+SupportService --> User : aids
+SupportService --> Transaction : aids user in
 
 
 class Book {

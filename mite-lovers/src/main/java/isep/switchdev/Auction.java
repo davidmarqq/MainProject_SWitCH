@@ -12,6 +12,7 @@ public class Auction {
    private double buyOutPrice;
    private List<String> bidHistory;       // Change List Type from String to Bid when Bid is available
 
+   public Auction() {}
 
    public Auction(String listing, LocalDateTime initialDate, LocalDateTime finalDate, double initialPrice, double buyOutPrice) {
       this.listing = listing;

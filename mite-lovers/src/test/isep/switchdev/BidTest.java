@@ -7,10 +7,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class BidTest {
     @Test
     void construtorInicialized() {
-        User Bid = new Bid ("Maria", 20);
+        Bid User = new Bid("Maria");
+        double value = 100.50;
 
-        assertEquals("Maria", Bid.getBidder());
-        assertEquals(20, Bid.getvalue());
+
+        Bid bid = new Bid(User, value);
+
+
+        assertSame(User, bid.getBidder());
+        assertEquals(value, bid.getValue(), 0.001);
 
     }
 }

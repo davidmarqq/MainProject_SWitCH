@@ -1,5 +1,6 @@
 package isep.switchdev;
 
+import isep.switchdev.Enum.Country;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +16,7 @@ class ContactTest {
         String phone = "123456789";
         String extension = "00351";
         Email email = new Email("user", "example.com");
-        Address address = new Address("Main St", "10", "4000-123", "Portugal");
+        Address address = new Address("Main St", "10", "4000-123", Country.PORTUGAL);
 
         Contact expected = new Contact(phone, extension, email, address);
 
@@ -34,7 +35,7 @@ class ContactTest {
         String phone = "123456789";
         String extension = null;
         Email email = new Email("user", "example.com");
-        Address address = new Address("Main St", "10", "4000-123", "Portugal");
+        Address address = new Address("Main St", "10", "4000-123", Country.PORTUGAL);
 
         // Act + Assert
         assertThrows(IllegalArgumentException.class, () ->
@@ -67,7 +68,7 @@ class ContactTest {
 
         // Arrange
         Email email = new Email("user", "example.com");
-        Address address = new Address("Main St", "10", "4000-123", "Portugal");
+        Address address = new Address("Main St", "10", "4000-123", Country.PORTUGAL);
         Contact contact = new Contact("123456789", "00351", email, address);
 
         String expected =

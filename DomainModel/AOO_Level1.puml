@@ -1,0 +1,76 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam componentStyle rectangle
+
+Listing "1" -- "0..1" Auction : > can be
+Listing "1   " -- "0..1   " DirectSale : > can be
+Listing "1..*" -- "       1" Seller : > has
+Listing "1" -- "1" Item : > has
+
+note as L
+    Represents a sale ad (direct sale and auction)
+    end note
+
+Listing -> L
+
+Item "*" -- "1" ItemDescription : > has
+note as N
+    Catalog
+    Represents the conceptual idea of Magazine or Book. Bibliographical Data
+    end note
+
+ItemDescription --> N
+
+note as S
+    Stock
+    Contains real attributes such as weigth, condition and real photos of the item
+    end note
+
+Item - S
+
+Book -- ItemDescription : > is
+Magazine -- ItemDescription : > is
+
+Buyer "1  " --- "1..*" DirectSale : > has
+Cart "1" -- "1" Transaction : > has
+DirectSale "*" --> "1" Cart : > has
+
+Auction "1" -- "*" Bid : > has
+Auction "1" -- "1" Transaction : > has
+Bid "*" -- "1" Bidder : > has
+
+Bidder -- User : > is
+
+Seller -- User : > is
+Buyer - User : > is
+
+component Listing{
+}
+component Item {
+}
+component ItemDescription {
+}
+component Seller {
+}
+component Buyer {
+}
+component Bidder {
+}
+component Bid {
+}
+component Cart {
+}
+component DirectSale {
+}
+component Transaction {
+}
+component Book{
+}
+component Magazine{
+}
+component Auction {
+}
+component User {
+}
+
+@enduml

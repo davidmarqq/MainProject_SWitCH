@@ -7,8 +7,6 @@ import java.util.concurrent.locks.Condition;
 
 public class Item {
     // Attributes:
-    private String _book;   // TODO change to Book
-    private Double _magazine;      // TODO change to Magazine
     private Condition _condition;
     private double weight;
     private List<Pictures> _pictures;

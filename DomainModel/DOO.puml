@@ -42,6 +42,7 @@ Cart "1" --> "0..1" Transaction : may lead to
 Transaction "1" --> "1..*" User : seller
 Transaction "  1" --> "  1" User : buyer
 Transaction "1" --> "1" LogisticsServices : handled by
+Transaction "1" ..> "1" TransactionStatus : has
 
 Auction "1" --> "1" Transaction : may lead to
 
@@ -72,90 +73,61 @@ SupportService --> Transaction : aids user in
 
 
 class Book {
-    - item:Item
-    - information:BibliographicalData
-    - isbn:Code
 }
 
 class Magazine {
-    - item:Item
-    - information:BibliographicalData
-    - issn:Code
 }
 
 class User {
     - userName:String
-    - contact:Contact
-    - profile:Profile
 }
 
 class Profile {
     name:String
-    country:Country
-    birthday:LocalDate
     isAuthor:boolean
 }
 
 
 class Item {
-    - book:Book
-    - magazine:Magazine
-    - condition:Condition
     - weight:int
-    - pictures[]: Picture
-    - dimensions: Dimension
-    - typeOfBinding:TypeOfBinding
     - edition:String
 
 }
 
 class BibliographicalData {
-    - title1:Title
-    - authors[]:Profile
-    - language:Language
-    - publisher:Publisher
     - publicationDate:LocalDate
-    - genre[]:Genre
     - numberOfPages:int
     - chunksOfText: String
 }
 
 class Listing {
-    - item:Item
     - price:double
     - shortDescription:String
     - listingTitle:String
-    - saleType:SaleType
-    - seller:User
 }
 
 
-
 class Cart {
-    - itemsList[]:Listing
     - buyer:User
 }
 
 
 class Auction {
-    - auctionedItem:Listing
     - buyOutPrice:double
     - initialDate:LocalDateTime
     - finalDate:LocalDateTime
     - initialPrice:double
-    - bidHistory[]:Bid
     
     /' currentBidder:User... sim ou não????'/
 }
 
 class Bid {
-    - bidder:User
     - value:double
 }
 
 class Transaction {
-    - sellers:List<User>
-    - buyer:User
+    totalAmount:double
+    status:TransactionStatus
 }
 
 
@@ -169,9 +141,9 @@ class Community{
 }
 
 class Dimension {
-    - length:int
-    - height:int
-    - width:int
+    - length:double
+    - height:double
+    - width:double
 }
 
 enum Language {
@@ -189,15 +161,12 @@ class Code {
 class Publisher {
     - name:String
     - vatNumber:String
-    - address:Address
-    - contact:Contact
 }
 
 class Address {
     - street:String
     - number:String
     - zipCode:String
-    - country:Country
 }
 
 enum Country {
@@ -210,8 +179,6 @@ enum Country {
 class Contact {
     - phoneNum:String
     - extension:String
-    - email:Email /'review'/
-    - address:Address
 }
 
 class Email {
@@ -242,6 +209,14 @@ enum Condition {
     VERY_GOOD
     GOOD
     ACCEPTABLE
+}
+
+enum TransactionStatus {
+    PENDING
+    PAID
+    SHIPPED
+    COMPLETED
+    CANCELED
 }
 
 

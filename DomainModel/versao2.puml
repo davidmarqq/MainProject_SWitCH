@@ -1,42 +1,55 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+skinparam ArrowColor #333
+skinparam ClassBackgroundColor #DDDDFF
+skinparam ClassBorderColor #0000FF
+skinparam Shadowing false
+skinparam componentStyle rectangle
+skinparam componentBorderColor DarkBlue
+skinparam component<<highlight>> {
+    BackgroundColor LightBlue
+}
+
+
 Listing "1" -- "0..1" Auction : > can be
 Listing "1   " -- "0..1   " DirectSale : > can be
 Listing "1..*" -- "       1" Seller : > has
 Listing "1" -- "1" Item : > has
 
 note as L
-    Represents a sale ad (direct sale and auction)
+    Represents a sale ad (direct sale or auction)
     end note
 
 Listing -> L
 
-Item "*" -- "1" ItemDescription : > has
+Item "1" -- "0..1" Book : < is
+Item "1" -- "0..1" Magazine : < is
+
 note as N
     Catalog
     Represents the conceptual idea of Magazine or Book. Bibliographical Data
     end note
 
-ItemDescription --> N
+BibliographicalData --> N
 
 note as S
     Stock
-    Contains real attributes such as weigth, condition and real photos of the item
+    Contains real attributes such as weight, condition and real photos of the item
     end note
 
 Item - S
 
-Book -- ItemDescription : > is
-Magazine -- ItemDescription : > is
+Book "1" -- "1" BibliographicalData : > has
+Magazine -- BibliographicalData : > has
 
 Buyer "1  " --- "1..*" DirectSale : > has
-Cart "1" -- "1" Transaction : > has
-DirectSale "*" --> "1" Cart : > has
+Cart "0..1" -- "0..1" Transaction : > may become
+DirectSale "*" -- "1" Cart : > has
 
-Auction "1" -- "*" Bid : > has
-Auction "1" -- "1" Transaction : > has
-Bid "*" -- "1" Bidder : > has
+Auction "1  " -- "*" Bid : > has
+Auction "0..1" -- "0..1" Transaction : > may become
+Bid "*" -- "1" Bidder : > made by
 
 Transaction "1" -- "1" LogisticsServices : > shipped by
 Transaction "1" -- "0..1" SupportService : > has
@@ -45,16 +58,17 @@ Listing "1" -- "0..1" SupportService : > has
 
 Community "1" --- "1..*" User : > is composed of
 
-Bidder -- User : > is
+Bidder "0..1" -- "1" User : > is
 
-Seller -- User : > is
-Buyer - User : > is
+Seller "0..1" -- "1" User : > is
+Buyer "0..1" - "1" User : > is
+
 
 component Listing {
 }
 component Item {
 }
-component ItemDescription {
+component BibliographicalData {
 }
 component Seller {
 }
@@ -70,11 +84,11 @@ component DirectSale {
 }
 component Transaction {
 }
-component LogisticsServices {
+component LogisticsServices #LightBlue {
 }
-component SupportService {
+component SupportService #LightBlue{
 }
-component Community{
+component Community #LightBlue {
 }
 component Book{
 }

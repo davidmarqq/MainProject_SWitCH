@@ -1,11 +1,9 @@
-package isep.switchdev;
-
+import isep.switchdev.Auction;
 import org.junit.jupiter.api.Test;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class Auction_Test {
 

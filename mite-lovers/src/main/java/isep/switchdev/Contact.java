@@ -22,39 +22,38 @@ public class Contact {
 
     // Getters (não sei se necessário)
     public String getPhoneNum() {
-        return phoneNum;
+        return _phoneNum;
     }
 
     public String getExtension() {
-        return extension;
+        return _extension;
     }
 
     public Email getEmail() {
-        return email;
+        return _email;
     }
 
     public Address getAddress() {
-        return address;
+        return _address;
     }
 
     //Method: Get full phone number (extension + number)
     public String getFullPhone() {
 
-        if (extension == null) {
+        if (_extension == null) {
             throw new IllegalArgumentException("Extension can´t be null");
         }
 
-        return extension + " " + phoneNum;
+        return _extension + " " + _phoneNum;
     }
 
     //Method: Get full contact information
     public String getFullContactInfo () {
 
         return "Full Contact - " +
-                "Phone number: " + extension + " " + phoneNum +
-                ", e-mail: " + email +
-                ", address: " + address +
-                "}";
+                "Phone number: " + _extension + " " + _phoneNum +
+                ", e-mail: " + _email +
+                ", address: " + _address;
     }
 
 

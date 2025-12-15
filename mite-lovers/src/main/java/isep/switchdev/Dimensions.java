@@ -3,15 +3,15 @@ package isep.switchdev;
 public class Dimensions {
     private double _height;
     private double _width;
-    private double _depth;
+    private double _length;
 
-    public Dimensions(double height, double width, double depth) {
-        if (height <= 0 || width <= 0 || depth <= 0)
-            throw new IllegalArgumentException("height, width and depth must be valid");
+    public Dimensions(double height, double width, double length) {
+        if (height <= 0 || width <= 0 || length <= 0)
+            throw new IllegalArgumentException("height, width and length must be valid");
 
         this._height = height;
         this._width = width;
-        this._depth = depth;
+        this._length = length;
     }
 
     public double getHeight() {
@@ -22,7 +22,7 @@ public class Dimensions {
         return this._width;
     }
 
-    public double getDepth() {
-        return this._depth;
+    public double getlength() {
+        return this._length;
     }
 }

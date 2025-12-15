@@ -1,17 +1,19 @@
 package isep.switchdev;
 
+import java.time.LocalDate;
+
 public class BibliographicalData {
     private Title _title;
-    private List<Authors> _authors;
-    private Language _language;
-    private Publisher _publisher;
+    private String _authors;   //TODO change to List<Authors>
+    private String _language;     //TODO Language
+    private String _publisher;  //TODO publisher
     private LocalDate _publicationDate;
-    private Genre _genre;
+    private String _genre;   //TODO Genre
     private int _numberOfPages;
     private String _chuncksOfText;
 
 
-    public BibliographicalData(Title title, List<Author> authors, Language language, Publisher publisher, LocalDate publicationDate, Genre genre, int numberOfPages, String chuncksOfText) {
+    public BibliographicalData(Title title, String authors, String language, String publisher, LocalDate publicationDate, String genre, int numberOfPages, String chuncksOfText) {
         this._title = title;
         this._authors = authors;
         this._language = language;

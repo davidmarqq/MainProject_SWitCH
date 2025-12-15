@@ -15,7 +15,7 @@ class DimensionsTest {
         Dimensions dimensions = new Dimensions(10.0, 0.20, 5.2);
         assertEquals(10.0, dimensions.getHeight());
         assertEquals(0.20, dimensions.getWidth());
-        assertEquals(5.2, dimensions.getDepth());
+        assertEquals(5.2, dimensions.getlength());
     }
 
     public static Stream<org.junit.jupiter.params.provider.Arguments> invalidDimensionsProvider() {
@@ -33,9 +33,9 @@ class DimensionsTest {
 
     @ParameterizedTest
     @MethodSource("invalidDimensionsProvider")
-    void allInvalid_ShouldThrowException(Double height, Double width, Double depth) {
+    void allInvalid_ShouldThrowException(Double height, Double width, Double length) {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Dimensions(height, width, depth);
+            new Dimensions(height, width, length);
         });
     }
 

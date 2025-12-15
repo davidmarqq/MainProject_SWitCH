@@ -1,13 +1,14 @@
 package isep.switchdev;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 public class BibliographicalData {
 
     // Attributes
     private Title title1;
     private Profile[] authors;
-    private Language language;
+    private Locale language;              // substitui Language (que seria um enum) por Locale
     private Publisher publisher;
     private LocalDate publishDate;
     private Genre[] genre;
@@ -15,7 +16,7 @@ public class BibliographicalData {
     private String chunksOfText;
 
     // Constructor
-    public BibliographicalData(Title title1, Profile[] authors, Language language, Publisher publisher, LocalDate publishDate,
+    public BibliographicalData(Title title1, Profile[] authors, Locale language, Publisher publisher, LocalDate publishDate,
                                Genre[] genre, int numberOfPages, String chunksOfText) {
         this.title1 = title1;
         this.authors = authors;
@@ -36,7 +37,7 @@ public class BibliographicalData {
         return authors;
     }
 
-    public Language getLanguage() {
+    public Locale getLanguage() {
         return language;
     }
 
@@ -44,7 +45,7 @@ public class BibliographicalData {
         return publisher;
     }
 
-    public LocalDate getPublishDate() {
+    public LocalDate getPublishDate() {                         // substitui Language (que seria um enum) por Locale
         return publishDate;
     }
 

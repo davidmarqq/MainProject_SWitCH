@@ -3,6 +3,7 @@ package isep.switchdev;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,7 +17,7 @@ class BibliographicalDataTest {
         // Arrange
         Title title = new Title("Childhood, Youth, Dependency: The Copenhagen Trilogy");
         Profile[] authors = { new Profile("Tove Ditlevsen") };
-        Language language = new Language("English");
+        Locale language = Locale.ENGLISH;                               // substitui Language (que seria um enum) por Locale
         Publisher publisher = new Publisher("Penguin Books LTD");
         LocalDate publishDate = LocalDate.of(2021, 1, 1);
         Genre[] genres = new Genre("Fiction");
@@ -45,7 +46,7 @@ class BibliographicalDataTest {
         // Arrange
         Title title = new Title("The Age of AI: And Our Human Future");
         Profile[] authors = { new Profile("Henry A Kissinger" + "Eric Schmidt III" + "Daniel Huttenlocher") };
-        Language language = new Language("English");
+        Locale language = Locale.ENGLISH;                        // substitui Language (que seria um enum) por Locale
         Publisher publisher = new Publisher("John Murray Press");
         LocalDate publishDate = LocalDate.of(2022, 8, 4);
         Genre[] genres = new Genre("Nonfiction" + "Technology" + "Science" + "Business" + "Social Sciences" + "Philosophy");

@@ -53,7 +53,9 @@ object Listing {
 }
 
 object Item {
-    - typeOfItem: book/ maganize
+    - bibliographicalData
+    - book: Book
+    - magazine: Magazine
     - condition
     - weight
     - pictures
@@ -97,12 +99,10 @@ object Transaction {
 }
 
 object Book {
-    - bibliographicalData
     - isbn
 }
 
 object Magazine{
-    - bibliographicalData
     - issn
 }
 object Auction {

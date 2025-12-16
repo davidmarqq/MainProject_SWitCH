@@ -1,0 +1,123 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide circle
+
+Listing "1" -- "0..1" Auction : > can be
+Listing "1   " -- "0..1   " DirectSale : > can be
+Listing "1..*" -- "       1" Seller : > has
+Listing "1" -- "1" Item : > has
+
+note as L
+    Represents a sale ad (direct sale and auction)
+    end note
+
+Listing -> L
+
+Item "*" -- "1" BibliographicalData : > has
+note as N
+    Catalog
+    Represents the conceptual idea of Magazine or Book. Bibliographical Data
+    end note
+
+BibliographicalData --> N
+
+note as S
+    Stock
+    Contains real attributes such as weigth, condition and real photos of the item
+    end note
+
+Item - S
+
+Book "0..1" -- "1" Item : > is
+Magazine "0..1" -- "1" Item : > is
+
+Buyer "1  " --- "1..*" DirectSale : > has
+Cart "1" -- "1" Transaction : > may become
+DirectSale "*" --> "1" Cart : > has
+
+Auction "1" -- "*" Bid : > has
+Auction "1" -- "1" Transaction : > may become
+Bid "*" -- "1" Bidder : > has
+
+Bidder "1"-- "1" User : > is
+Seller "1" -- "1" User : > is
+Buyer "1" - "1" User : > is
+
+object Listing {
+    - item
+    - price
+    - shortDescription
+    - listingTitle
+    - saleType
+    - seller
+}
+
+object Item {
+    - typeOfItem: book/ maganize
+    - condition
+    - weight
+    - pictures
+    - dimensions
+    - typeOfBinding
+    - edition
+}
+object BibliographicalData {
+    - title
+    - authors
+    - language
+    - publisher
+    - publicationDate
+    - genre
+    - numberOfPages
+    - chunksOfText
+}
+object Seller {
+}
+object Buyer {
+}
+object Bidder {
+}
+object Bid {
+    - bidder
+    - value
+}
+
+object Cart {
+    - items list
+    - buyer
+}
+
+object DirectSale {
+}
+
+object Transaction {
+    - sellers
+    - buyer
+    - listing
+}
+
+object Book {
+    - bibliographicalData
+    - isbn
+}
+
+object Magazine{
+    - bibliographicalData
+    - issn
+}
+object Auction {
+    - auctionedItem
+    - buyOutPrice
+    - initialDate
+    - finalDate
+    - initialPrice
+    - bidHistory
+}
+
+object User {
+    - name
+    - contacts
+    - address
+}
+
+@enduml

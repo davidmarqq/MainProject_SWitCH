@@ -11,11 +11,15 @@ public class Address {
 
 
     public Address(String street, String number, String zipCode, Country country) {
+
+        if (street == null || number == null || zipCode == null || country == null) {
+            throw new IllegalArgumentException("Street, number, zip Code and country are all required fields.");
+        }
+
         this.street = street;
         this.number = number;
         this.zipCode = zipCode;
         this.country = country;
-
     }
 
     public String getStreet() {

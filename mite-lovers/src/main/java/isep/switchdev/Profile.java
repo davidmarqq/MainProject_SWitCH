@@ -13,7 +13,7 @@ public class Profile {
 
     public Profile(String name, Country country, LocalDate birthday, boolean isAuthor) {
         if (name == null || name.isBlank() || country == null || birthday == null) {
-            throw new IllegalArgumentException("Profile attributes cannot be null or empty");
+            throw new IllegalArgumentException("Profile attributes cannot be null or blank");
         }
         this.name = name;
         this.country = country;

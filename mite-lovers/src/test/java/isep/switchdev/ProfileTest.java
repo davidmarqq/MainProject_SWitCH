@@ -10,45 +10,45 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProfileTest {
 
     @Test
-    void createProfileWithValidData() {
+    void shouldCreateProfileWithValidData() {
         Profile profile = new Profile(
-                "Bruno",
+                "Test User",
                 Country.PORTUGAL,
-                LocalDate.of(1999, 1, 1),
+                LocalDate.of(2000, 5, 10),
                 true
         );
 
-        assertEquals("Bruno", profile.getName());
+        assertEquals("Test User", profile.getName());
         assertEquals(Country.PORTUGAL, profile.getCountry());
-        assertEquals(LocalDate.of(1999, 1, 1), profile.getBirthday());
+        assertEquals(LocalDate.of(2000, 5, 10), profile.getBirthday());
         assertTrue(profile.isAuthor());
     }
 
     @Test
-    void nameCannotBeNull() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new Profile(null, Country.PORTUGAL, LocalDate.now(), true)
-        );
+    void shouldFailWhenNameIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Profile(null, Country.PORTUGAL, LocalDate.now(), false);
+        });
     }
 
     @Test
-    void nameCannotBeBlank() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new Profile("   ", Country.PORTUGAL, LocalDate.now(), true)
-        );
+    void shouldFailWhenNameIsBlank() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Profile("   ", Country.FRANCE, LocalDate.now(), false);
+        });
     }
 
     @Test
-    void countryCannotBeNull() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new Profile("Bruno", null, LocalDate.now(), true)
-        );
+    void shouldFailWhenCountryIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Profile("Valid Name", null, LocalDate.now(), false);
+        });
     }
 
     @Test
-    void birthdayCannotBeNull() {
-        assertThrows(IllegalArgumentException.class, () ->
-                new Profile("Bruno", Country.PORTUGAL, null, true)
-        );
+    void shouldFailWhenBirthdayIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Profile("Valid Name", Country.GERMANY, null, false);
+        });
     }
 }

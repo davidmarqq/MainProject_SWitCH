@@ -6,6 +6,9 @@ public class Code {
     private final String issn;
 
     public Code(String isbn10, String isbn13, String issn) {
+        if (isbn10 == null || isbn10.isBlank() || isbn13 == null || isbn13.isBlank() || issn == null || issn.isBlank()) {
+            throw new IllegalArgumentException("Code attributes cannot be null or blank");
+        }
 
         this.isbn10 = isbn10;
         this.isbn13 = isbn13;

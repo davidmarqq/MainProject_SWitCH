@@ -1,4 +1,4 @@
-package isep.switchdev.profile;
+package isep.switchdev;
 
 import isep.switchdev.Enum.Country;
 

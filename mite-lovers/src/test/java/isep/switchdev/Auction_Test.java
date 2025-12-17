@@ -1,3 +1,5 @@
+package isep.switchdev;
+
 import isep.switchdev.Auction;
 import org.junit.jupiter.api.Test;
 

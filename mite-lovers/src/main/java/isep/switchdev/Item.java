@@ -26,7 +26,6 @@ public class Item {
 
     //Construtor Book:
     public Item(String book, Condition condition, double weigth, List<Pictures> pictures, Dimensions dimension, TypeOfBinding typeOfBinding, String edition) {
-        this._book = book;
         this._condition = condition;
         this.weight = weigth;
         this._pictures = pictures;
@@ -37,7 +36,6 @@ public class Item {
 
     //Construtor Magazine:
     public Item(Double magazine, Condition condition, double weigth, List<Pictures> pictures, Dimensions dimension, TypeOfBinding typeOfBinding, String edition) {
-        this._magazine = magazine;
         this._condition = condition;
         this.weight = weigth;
         this._pictures = pictures;

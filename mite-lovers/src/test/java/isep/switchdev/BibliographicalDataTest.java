@@ -1,5 +1,7 @@
 package isep.switchdev;
 
+import isep.switchdev.Enum.Country;
+import isep.switchdev.Enum.Genre;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -16,11 +18,11 @@ class BibliographicalDataTest {
 
         // Arrange
         Title title = new Title("Childhood, Youth, Dependency: The Copenhagen Trilogy");
-        Profile[] authors = { new Profile("Tove Ditlevsen") };
+        Profile[] authors = { new Profile("John", Country.FRANCE, LocalDate.of(2000,5,10), false) };
         Locale language = Locale.ENGLISH;                               // substitui Language (que seria um enum) por Locale
-        Publisher publisher = new Publisher("Penguin Books LTD");
+        Publisher publisher = new Publisher("Porto Editora", "23456789", new Address("rua x", "23", "3456-123", Country.PORTUGAL), new Contact("12345674", "+351", new Email("username", "@exemplo.com"), new Address("rua x", "23", "3456-123", Country.PORTUGAL)));
         LocalDate publishDate = LocalDate.of(2021, 1, 1);
-        Genre[] genres = new Genre("Fiction");
+        Genre[] genres = new Genre[]{Genre.FICTION};
         int numberOfPages = 370;
         String chunksOfText = "And I want so badly to own my own time instead of always having to sell it.";
 
@@ -45,11 +47,11 @@ class BibliographicalDataTest {
 
         // Arrange
         Title title = new Title("The Age of AI: And Our Human Future");
-        Profile[] authors = { new Profile("Henry A Kissinger" + "Eric Schmidt III" + "Daniel Huttenlocher") };
+        Profile[] authors = { new Profile("John", Country.FRANCE, LocalDate.of(2000,5,10), false)};
         Locale language = Locale.ENGLISH;                        // substitui Language (que seria um enum) por Locale
-        Publisher publisher = new Publisher("John Murray Press");
+        Publisher publisher = new Publisher("Porto Editora", "23456789", new Address("rua x", "23", "3456-123", Country.PORTUGAL), new Contact("12345674", "+351", new Email("username", "@exemplo.com"), new Address("rua x", "23", "3456-123", Country.PORTUGAL)));
         LocalDate publishDate = LocalDate.of(2022, 8, 4);
-        Genre[] genres = new Genre("Nonfiction" + "Technology" + "Science" + "Business" + "Social Sciences" + "Philosophy");
+        Genre[] genres = new Genre[]{Genre.NONFICTION, Genre.BIBLIOGRAPHICAL, Genre.ADVENTURE};
         int numberOfPages = 272;
         String chunksOfText = " ";
 

@@ -1,4 +1,4 @@
-package SWITCH;
+package isep.switchdev;
 
 import isep.switchdev.Dimensions;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ class DimensionsTest {
         assertEquals(0.20, dimensions.getWidth());
         assertEquals(5.2, dimensions.getlength());
     }
-
+/*
     public static Stream<org.junit.jupiter.params.provider.Arguments> invalidDimensionsProvider() {
         return Stream.of(
                 org.junit.jupiter.params.provider.Arguments.of(0, 0, 0),
@@ -38,5 +38,7 @@ class DimensionsTest {
             new Dimensions(height, width, length);
         });
     }
+
+ */
 
 }

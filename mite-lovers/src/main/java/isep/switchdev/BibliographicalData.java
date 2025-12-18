@@ -1,5 +1,7 @@
 package isep.switchdev;
 
+import isep.switchdev.Enum.Genre;
+
 import java.time.LocalDate;
 import java.util.Locale;
 

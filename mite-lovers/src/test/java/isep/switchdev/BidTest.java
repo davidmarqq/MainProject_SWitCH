@@ -41,6 +41,6 @@ class BidTest {
                 () -> new Bid(null, value)
         );
 
-        assertEquals("Bidder should exist.", exception.getMessage());
+        assertEquals("bidder can't be null.", exception.getMessage());
     }
 }

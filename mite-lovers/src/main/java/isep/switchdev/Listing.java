@@ -7,10 +7,10 @@ public class Listing {
     private double _price;
     private String _shortDescription;
     private String _listingTitle;
-    private SaleType _saleType;
+    private String _saleType; // TODO change to SaleType
     private User _seller;
 
-    public Listing(Item item, double price, String shortDescription, String listingTitle, SaleType saleType, User seller) {
+    public Listing(Item item, double price, String shortDescription, String listingTitle, String saleType, User seller) {
 
         if (item == null) {
             throw new IllegalArgumentException("Item cannot be null.");

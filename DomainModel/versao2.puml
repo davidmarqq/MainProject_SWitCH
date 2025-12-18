@@ -12,10 +12,10 @@ skinparam component<<highlight>> {
 }
 
 
-Listing "1" -- "0..1" Auction : > can be
+Listing "1" -- "0..1" Auction : > can be an
 Listing "1   " -- "0..1   " DirectSale : > can be
-Listing "1..*" -- "       1" Seller : > has
-Listing "1" -- "1" Item : > has
+Listing "1..*" -- "       1" Seller : > created by
+Listing "1" -- " 1  " Item : > announces
 
 note as L
     Represents a sale ad (direct sale or auction)
@@ -23,12 +23,13 @@ note as L
 
 Listing -> L
 
-Item "1" -- "0..1" Book : < is
-Item "1" -- "0..1" Magazine : < is
+Item "1" -- "0..1" Book : < is an
+Item "1" -- "0..1" Magazine : < is an
 
 note as N
     Catalog
-    Represents the conceptual idea of Magazine or Book. Bibliographical Data
+    Refers to the bibliographical information of either a Magazine or
+    a Book (for example, title, authors, date of publication).
     end note
 
 BibliographicalData --> N
@@ -63,35 +64,12 @@ Bidder "0..1" -- "1" User : > is
 Seller "0..1" -- "1" User : > is
 Buyer "0..1" - "1" User : > is
 
-User "1" -- "*" Review : < made by
-Review "0..2" -- "1" Transaction : < can lead to
-/'Transaction "1" -- "2" User : > concerns '/
-FAQ "1" -- "1" SupportService : updates
 
-Seller -- Transaction
-Buyer -- Transaction
-
-/'----- Support Service ------ '/
-
-SupportService "1" -- "*" Ticket : < handled by
-SupportService "1" -- "*" Appraisal : > can do
-SupportService "1" -- "*" DeliveryIssues : > can handle
-SupportService "1" -- "*" Return : > can handle
-
-Return "0..1" -- "1" Refund : > can have
-Refund "0..1" -- "1" DeliveryIssues : > can lead to
-
+component Listing {
+}
 component Item {
 }
 component BibliographicalData {
-}
-component Listing {
-}
-component Book{
-}
-component Magazine{
-}
-component User {
 }
 component Seller {
 }
@@ -100,8 +78,6 @@ component Buyer {
 component Bidder {
 }
 component Bid {
-}
-component Auction {
 }
 component Cart {
 }
@@ -115,20 +91,13 @@ component SupportService #LightBlue{
 }
 component Community #LightBlue {
 }
-component DeliveryIssues #LightBlue {
+component Book{
 }
-component Return #LightBlue {
+component Magazine{
 }
-component Refund #LightBlue {
+component Auction {
 }
-component Appraisal #LightBlue {
+component User {
 }
-component Review #LightBlue {
-}
-component FAQ #LightBlue {
-}
-component Ticket #LightBlue {
-}
-
 
 @enduml

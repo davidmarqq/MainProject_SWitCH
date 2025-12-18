@@ -23,7 +23,7 @@ ItemDescription --> N
 
 note as S
     Stock
-    Contains real attributes such as weigth, condition and real photos of the item
+    Contains real attributes such as weight, condition and real photos of the item
     end note
 
 Item - S

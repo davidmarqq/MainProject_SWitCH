@@ -12,10 +12,10 @@ skinparam component<<highlight>> {
 }
 
 
-Listing "1" -- "0..1" Auction : > can be
+Listing "1" -- "0..1" Auction : > can be an
 Listing "1   " -- "0..1   " DirectSale : > can be
-Listing "1..*" -- "       1" Seller : > has
-Listing "1" -- "1" Item : > has
+Listing "1..*" -- "       1" Seller : > created by
+Listing "1" -- " 1  " Item : > announces
 
 note as L
     Represents a sale ad (direct sale or auction)
@@ -23,12 +23,13 @@ note as L
 
 Listing -> L
 
-Item "1" -- "0..1" Book : < is
-Item "1" -- "0..1" Magazine : < is
+Item "1" -- "0..1" Book : < is an
+Item "1" -- "0..1" Magazine : < is an
 
 note as N
     Catalog
-    Represents the conceptual idea of Magazine or Book. Bibliographical Data
+    Refers to the bibliographical information of either a Magazine or
+    a Book (for example, title, authors, date of publication).
     end note
 
 BibliographicalData --> N

@@ -4,6 +4,8 @@ import isep.switchdev.Enum.Country;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,30 +13,39 @@ public class AddressTest {
 
     @ParameterizedTest
     @NullAndEmptySource
+    @ValueSource(strings = {"  ", "\t", "\n"})
     void constructor_whenCalledWithInvalidStreet_ThrowsException(String street) {
         assertThrows(IllegalArgumentException.class, () -> new Address(street, "dummyNumber", "dummyZipCode", Country.PORTUGAL));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
+    @ValueSource(strings = {"  ", "\t", "\n"})
     void constructor_whenCalledWithInvalidNumber_ThrowsException(String number) {
         assertThrows(IllegalArgumentException.class, () -> new Address("dummyStreet", number, "dummyZipCode", Country.PORTUGAL));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
+    @ValueSource(strings = {"  ", "\t", "\n"})
     void constructor_whenCalledWithInvalidZipCode_ThrowsException(String zipCode) {
         assertThrows(IllegalArgumentException.class, () -> new Address("dummyStreet", "dummyNumber", zipCode, Country.PORTUGAL));
     }
 
-    @Test
-    void constructor_whenCalledWithInvalidCountry_ThrowsException() {
-        assertThrows(IllegalArgumentException.class, () -> new Address("dummyStreet", "dummyNumber", "dummyZipCode", null));
+    @ParameterizedTest
+    @NullSource
+    void constructor_whenCalledWithInvalidCountry_ThrowsException(Country country) {
+        assertThrows(IllegalArgumentException.class, () -> new Address("dummyStreet", "dummyNumber", "dummyZipCode", country));
     }
 
     @Test
-    void constructor_whenCalledWithValidParameters_DoesNotThrowException() {
-        new Address("dummyStreet", "dummyNumber", "dummyZipCode", Country.PORTUGAL);
+    void constructor_whenCalledWithValidParameters_DoesNotThrowExceptionAndSetsValues() {
+        Address address = new Address("dummyStreet", "dummyNumber", "dummyZipCode", Country.PORTUGAL);
+
+        assertEquals("dummyStreet", address.getStreet());
+        assertEquals("dummyNumber", address.getNumber());
+        assertEquals("dummyZipCode", address.getZipCode());
+        assertEquals(Country.PORTUGAL, address.getCountry());
     }
 
     @Test

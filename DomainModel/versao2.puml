@@ -1,6 +1,12 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+title Mite lovers - AOO Level 1
+skinparam title {
+  FontSize 24
+}
+
+
 skinparam ArrowColor #333
 skinparam ClassBackgroundColor #DDDDFF
 skinparam ClassBorderColor #0000FF
@@ -10,6 +16,14 @@ skinparam componentBorderColor DarkBlue
 skinparam component<<highlight>> {
     BackgroundColor LightBlue
 }
+skinparam legend {
+  BackgroundColor LightBlue
+  FontSize 14
+}
+
+legend right
+ Suggestion to discuss
+end legend
 
 
 Listing "1" -- "              0..1" Auction : > can be an
@@ -25,6 +39,7 @@ Listing -> L
 
 Item "1" -- "0..1" Book : < is an
 Item "1" -- "0..1" Magazine : < is an
+Item "1" -- "1" BibliographicalData : has
 
 note as N
     Catalog
@@ -42,11 +57,11 @@ note as S
 
 Item - S
 
-Book "1" -- "                            1" BibliographicalData : > has
-Magazine "1" -- "1" BibliographicalData : > has
+
+
 
 Buyer "1  " ----- "  1..* " DirectSale : > buys through
-Cart "1" --- "0..1    " Transaction : > leads to
+Cart "1" --- "0..1    " Transaction : > can result  in
 DirectSale "        *" -- "1 " Cart : > added to
 
 
@@ -59,13 +74,14 @@ Transaction "1" -- "0..1" SupportService : > managed by
 
 Listing "  1 " --------- "0..1" SupportService : > is regulated by
 
-Community "1  " --- "1..*" User : > is composed of
-
+/'Community "1  " --- "1..*" User : > is composed of'/
+User -- Community
 Bidder "0..1   " -- "1" User : > is a
 
 Seller "0..1 " -- "1" User : > is a
 Buyer "0..1" - "1" User : > is a
 
+User "1" -- "*" SupportService : > can request
 
 component Listing {
 }
@@ -101,5 +117,8 @@ component Auction {
 }
 component User {
 }
+
+
+
 
 @enduml

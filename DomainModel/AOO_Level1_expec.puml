@@ -12,7 +12,14 @@ skinparam ClassBorderColor #0000FF
 skinparam Shadowing false
 skinparam componentStyle rectangle
 skinparam componentBorderColor DarkBlue
+skinparam legend {
+  BackgroundColor LightBlue
+  FontSize 14
+}
 
+legend left
+ Suggestion to discuss
+end legend
 
 
 Listing "1" -- "0..1" Auction : > can be

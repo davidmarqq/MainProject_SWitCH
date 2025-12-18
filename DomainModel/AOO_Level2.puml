@@ -6,6 +6,15 @@ skinparam title {
   FontSize 24
 }
 
+skinparam legend {
+  BackgroundColor LightBlue
+  FontSize 14
+}
+
+legend right
+ Suggestion to discuss
+end legend
+
 /' ------- Listing --------- '/
 
 Listing "1" -- "0..1" Auction : > can be an
@@ -13,24 +22,27 @@ Listing "1   " -- "0..1   " DirectSale : > can be a
 Listing "1..*" -- "       1" Seller : > is created by
 Listing "1" -- "1" Item : > announces
 
-Listing "1" -- "0..1" SupportService
+
 
 /' ------- Product --------- '/
 together {
-Item "*" -- "1" BibliographicalData : > has
-Book "0..1" -- "1" Item : > is an
+
+
 Magazine "0..1" -- "1" Item : > is an
+Book "0..1" -- "1" Item : > is an
+BibliographicalData "1" -- "*" Item
+
 }
 /' ------- Direct Sale -------- '/
 
 Buyer "1  " --- "1..*" DirectSale : > buys through
-Cart "1" -- "1" Transaction : > may become
+Cart "1" -- "1" Transaction : > can result
 DirectSale "*" --> "1" Cart : > added to
 
 /' ------- Auction ------ '/
 together {
 Auction "1" -- "*" Bid : > may have
-Auction "1" -- "1" Transaction : > may become
+Auction "1" -- "1" Transaction : > can result
 Bid "*" -- "1" Bidder : > offered by
 }
 /' ------- Users -------- '/
@@ -42,7 +54,9 @@ Buyer "1" - "1" User : > is a
 
 /' ----- Community -------'/
 
-Community "1" -- "1..*" User : > is composed of
+User "1..*" -- "1" Community
+Transaction "1" -- "1" LogisticService
+SupportService "0..1" -- "1" Listing
 
 /' ========== Concepts ============= '/
 
@@ -131,7 +145,7 @@ note as N
     Represents the conceptual idea of Magazine or Book.
     end note
 
-BibliographicalData --> N
+BibliographicalData -- N
 
 note as S
     Stock

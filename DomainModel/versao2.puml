@@ -12,9 +12,9 @@ skinparam component<<highlight>> {
 }
 
 
-Listing "1" -- "0..1" Auction : > can be an
-Listing "1   " -- "0..1   " DirectSale : > can be
-Listing "1..*" -- "       1" Seller : > created by
+Listing "1" -- "              0..1" Auction : > can be an
+Listing "  1   " --- "  0..1 " DirectSale : > can be a
+Listing "1..*" -- "       1" Seller : > is created by
 Listing "1" -- " 1  " Item : > announces
 
 note as L
@@ -36,33 +36,35 @@ BibliographicalData --> N
 
 note as S
     Stock
-    Contains real attributes such as weight, condition and real photos of the item
+    Contains physical attributes such
+    as weight, condition and real photos of the item
     end note
 
 Item - S
 
-Book "1" -- "1" BibliographicalData : > has
-Magazine -- BibliographicalData : > has
+Book "1" -- "                            1" BibliographicalData : > has
+Magazine "1" -- "1" BibliographicalData : > has
 
-Buyer "1  " --- "1..*" DirectSale : > has
-Cart "0..1" -- "0..1" Transaction : > may become
-DirectSale "*" -- "1" Cart : > has
+Buyer "1  " ----- "  1..* " DirectSale : > buys through
+Cart "1" --- "0..1    " Transaction : > leads to
+DirectSale "        *" -- "1 " Cart : > added to
 
-Auction "1  " -- "*" Bid : > has
-Auction "0..1" -- "0..1" Transaction : > may become
-Bid "*" -- "1" Bidder : > made by
 
-Transaction "1" -- "1" LogisticsServices : > shipped by
-Transaction "1" -- "0..1" SupportService : > has
+Auction "   1  " -- "*" Bid : > may have
+Auction "0..1" -- "0..1" Transaction : > can result in
+Bid "*" -- "                  1" Bidder : > offered by
 
-Listing "1" -- "0..1" SupportService : > has
+Transaction "1" -- "1 " LogisticsServices : > shipped by
+Transaction "1" -- "0..1" SupportService : > managed by
 
-Community "1" --- "1..*" User : > is composed of
+Listing "  1 " --------- "0..1" SupportService : > is regulated by
 
-Bidder "0..1" -- "1" User : > is
+Community "1  " --- "1..*" User : > is composed of
 
-Seller "0..1" -- "1" User : > is
-Buyer "0..1" - "1" User : > is
+Bidder "0..1   " -- "1" User : > is a
+
+Seller "0..1 " -- "1" User : > is a
+Buyer "0..1" - "1" User : > is a
 
 
 component Listing {

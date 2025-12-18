@@ -1,0 +1,134 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam ArrowColor #333
+skinparam ClassBackgroundColor #DDDDFF
+skinparam ClassBorderColor #0000FF
+skinparam Shadowing false
+skinparam componentStyle rectangle
+skinparam componentBorderColor DarkBlue
+skinparam component<<highlight>> {
+    BackgroundColor LightBlue
+}
+
+
+Listing "1" -- "0..1" Auction : > can be
+Listing "1   " -- "0..1   " DirectSale : > can be
+Listing "1..*" -- "       1" Seller : > has
+Listing "1" -- "1" Item : > has
+
+note as L
+    Represents a sale ad (direct sale or auction)
+    end note
+
+Listing -> L
+
+Item "1" -- "0..1" Book : < is
+Item "1" -- "0..1" Magazine : < is
+
+note as N
+    Catalog
+    Represents the conceptual idea of Magazine or Book. Bibliographical Data
+    end note
+
+BibliographicalData --> N
+
+note as S
+    Stock
+    Contains real attributes such as weight, condition and real photos of the item
+    end note
+
+Item - S
+
+Book "1" -- "1" BibliographicalData : > has
+Magazine -- BibliographicalData : > has
+
+Buyer "1  " --- "1..*" DirectSale : > has
+Cart "0..1" -- "0..1" Transaction : > may become
+DirectSale "*" -- "1" Cart : > has
+
+Auction "1  " -- "*" Bid : > has
+Auction "0..1" -- "0..1" Transaction : > may become
+Bid "*" -- "1" Bidder : > made by
+
+Transaction "1" -- "1" LogisticsServices : > shipped by
+Transaction "1" -- "0..1" SupportService : > has
+
+Listing "1" -- "0..1" SupportService : > has
+
+Community "1" --- "1..*" User : > is composed of
+
+Bidder "0..1" -- "1" User : > is
+
+Seller "0..1" -- "1" User : > is
+Buyer "0..1" - "1" User : > is
+
+User "1" -- "*" Review : < made by
+Review "0..2" -- "1" Transaction : < can lead to
+/'Transaction "1" -- "2" User : > concerns '/
+FAQ "1" -- "1" SupportService : updates
+
+Seller -- Transaction
+Buyer -- Transaction
+
+/'----- Support Service ------ '/
+
+SupportService "1" -- "*" Ticket : < handled by
+SupportService "1" -- "*" Appraisal : > can do
+SupportService "1" -- "*" DeliveryIssues : > can handle
+SupportService "1" -- "*" Return : > can handle
+
+Return "0..1" -- "1" Refund : > can have
+Refund "0..1" -- "1" DeliveryIssues : > can lead to
+
+component Item {
+}
+component BibliographicalData {
+}
+component Listing {
+}
+component Book{
+}
+component Magazine{
+}
+component User {
+}
+component Seller {
+}
+component Buyer {
+}
+component Bidder {
+}
+component Bid {
+}
+component Auction {
+}
+component Cart {
+}
+component DirectSale {
+}
+component Transaction {
+}
+component LogisticsServices #LightBlue {
+}
+component SupportService #LightBlue{
+}
+component Community #LightBlue {
+}
+component DeliveryIssues #LightBlue {
+}
+component Return #LightBlue {
+}
+component Refund #LightBlue {
+}
+component Appraisal #LightBlue {
+}
+component Review #LightBlue {
+}
+component FAQ #LightBlue {
+}
+component Ticket #LightBlue {
+}
+
+
+@enduml

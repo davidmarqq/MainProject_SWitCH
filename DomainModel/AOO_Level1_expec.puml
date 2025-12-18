@@ -1,5 +1,10 @@
 @startuml
 'https://plantuml.com/class-diagram
+title Mite lovers - AOO Level 1 with speculation
+skinparam title {
+  FontSize 24
+}
+
 
 skinparam ArrowColor #333
 skinparam ClassBackgroundColor #DDDDFF
@@ -7,9 +12,7 @@ skinparam ClassBorderColor #0000FF
 skinparam Shadowing false
 skinparam componentStyle rectangle
 skinparam componentBorderColor DarkBlue
-skinparam component<<highlight>> {
-    BackgroundColor LightBlue
-}
+
 
 
 Listing "1" -- "0..1" Auction : > can be

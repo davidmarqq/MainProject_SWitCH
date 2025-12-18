@@ -13,14 +13,14 @@ BibliographicalData "1" --> "1..*" Profile : has author
 
 
 /' ========= '/
-Book " 1" --> " 1" BibliographicalData : has
+Item" 1" --> " 1" BibliographicalData : has
 Book "1" -> "1" Item : is a
 Book "1" --> "0..2" Code : has
 Book "*" -> "1" Publisher : has
 
 
 /' ========= '/
-Magazine "   1" --> "  1" BibliographicalData : has
+Item "   1" --> "  1" BibliographicalData : has
 Magazine "1" -> "1" Item : is a
 Magazine "1" --> "0..1" Code : has
 Magazine "*" -> "1" Publisher : has

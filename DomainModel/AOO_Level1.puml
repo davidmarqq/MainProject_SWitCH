@@ -1,6 +1,10 @@
 @startuml
 'https://plantuml.com/class-diagram
 skinparam componentStyle rectangle
+title Mite lovers - AOO Level 1
+skinparam title {
+  FontSize 24
+}
 
 Listing "1" -- "0..1" Auction : > can be
 Listing "1   " -- "0..1   " DirectSale : > can be

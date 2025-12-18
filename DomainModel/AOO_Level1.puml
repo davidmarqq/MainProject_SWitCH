@@ -4,40 +4,40 @@ skinparam componentStyle rectangle
 
 Listing "1" -- "0..1" Auction : > can be
 Listing "1   " -- "0..1   " DirectSale : > can be
-Listing "1..*" -- "       1" Seller : > has
-Listing "1" -- "1" Item : > has
+Listing "1..*" -- "       1" Seller : > created by
+Listing "1" -- "1" Item : > lists
 
 note as L
-    Represents a sale ad (direct sale and auction)
+    Represents a sale ad (direct sale or auction)
     end note
 
 Listing -> L
 
-Item "*" -- "1" ItemDescription : > has
+Item "*" -- "1" BibliographicalData : > has
 note as N
     Catalog
-    Represents the conceptual idea of Magazine or Book. Bibliographical Data
+    Represents the conceptual idea of Magazine or Book.
     end note
 
-ItemDescription --> N
+BibliographicalData --> N
 
 note as S
     Stock
-    Contains real attributes such as weigth, condition and real photos of the item
+    Contains real attributes such as weight, condition and real photos of the item
     end note
 
 Item - S
 
-Book -- ItemDescription : > is
-Magazine -- ItemDescription : > is
+Book "1" -- "1" Item : > is an
+Magazine "1" -- "1" Item : > is an
 
-Buyer "1  " --- "1..*" DirectSale : > has
-Cart "1" -- "1" Transaction : > has
-DirectSale "*" --> "1" Cart : > has
+Buyer "1  " --- "1..*" DirectSale : > makes
+Cart "1" -- "0..1" Transaction : > can turn into
+DirectSale "*" --> "1" Cart : > listed in
 
 Auction "1" -- "*" Bid : > has
-Auction "1" -- "1" Transaction : > has
-Bid "*" -- "1" Bidder : > has
+Auction "1" -- "1" Transaction : > becomes
+Bid "*" -- "1" Bidder : > made by
 
 Bidder -- User : > is
 
@@ -48,7 +48,7 @@ component Listing{
 }
 component Item {
 }
-component ItemDescription {
+component BibliographicalData {
 }
 component Seller {
 }

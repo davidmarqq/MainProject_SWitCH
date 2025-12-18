@@ -23,7 +23,8 @@
 hs_err_pid*
 replay_pid*
 
-
 # IntelliJ
 .idea/
+.idea/compiler.xml
 *.iml
+

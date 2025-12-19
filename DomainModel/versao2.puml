@@ -29,7 +29,7 @@ end legend
 Listing "1" -- "              0..1" Auction : > can be an
 Listing "  1   " --- "  0..1 " DirectSale : > can be a
 Listing "1..*" -- "       1" Seller : > is created by
-Listing "1" -- " 1  " Item : > announces
+Listing "1" -- "1" Item : > announces
 
 note as L
     Represents a sale ad (direct sale or auction)
@@ -37,9 +37,11 @@ note as L
 
 Listing -> L
 
-Item "1" -- "0..1" Book : < is an
-Item "1" -- "0..1" Magazine : < is an
-Item "1" -- "1" BibliographicalData : has
+Book "0..1" -- "1" Item : > is a
+Magazine "0..1" -- "1" Item : > is a
+/'Item "1" - "0..1" Book : < is an
+Item "1" - "0..1" Magazine : < is an'/
+Item "*" -- "1" BibliographicalData : > has
 
 note as N
     Catalog
@@ -60,9 +62,9 @@ Item - S
 
 
 
-Buyer "1  " ----- "  1..* " DirectSale : > buys through
+Buyer "1  " --- "  1..* " DirectSale : > buys through
 Cart "1" --- "0..1    " Transaction : > can result  in
-DirectSale "        *" -- "1 " Cart : > added to
+DirectSale "        *" --- "1 " Cart : > added to
 
 
 Auction "   1  " -- "*" Bid : > may have
@@ -76,7 +78,7 @@ Listing "  1 " --------- "0..1" SupportService : > is regulated by
 
 /'Community "1  " --- "1..*" User : > is composed of'/
 User -- Community
-Bidder "0..1   " -- "1" User : > is a
+Bidder "0..1" -- "1" User : > is a
 
 Seller "0..1 " -- "1" User : > is a
 Buyer "0..1" - "1" User : > is a

@@ -9,7 +9,7 @@ skinparam title {
 Listing "1" -- "0..1" Auction : > can be
 Listing "1   " -- "0..1   " DirectSale : > can be
 Listing "1..*" -- "       1" Seller : > created by
-Listing "1" -- "1" Item : > lists
+Listing "1" --- "1" Item : > lists
 
 note as L
     Represents a sale ad (direct sale or auction)
@@ -36,17 +36,17 @@ Book "1" -- "1" Item : > is an
 Magazine "1" -- "1" Item : > is an
 
 Buyer "1  " --- "1..*" DirectSale : > makes
-Cart "1" -- "0..1" Transaction : > can turn into
+Cart "1  " -- " 0..1" Transaction : > can turn into
 DirectSale "*" --> "1" Cart : > listed in
 
 Auction "1" -- "*" Bid : > has
 Auction "1" -- "1" Transaction : > becomes
 Bid "*" -- "1" Bidder : > made by
 
-Bidder -- User : > is
+Bidder "0..1" -- "1" User : > is a
 
-Seller -- User : > is
-Buyer - User : > is
+Seller "0..1" -- "1" User : > is a
+Buyer "0..1" - "1" User : > is a
 
 component Listing{
 }

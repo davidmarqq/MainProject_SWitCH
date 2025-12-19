@@ -50,8 +50,7 @@ note as S
 
 Item - S
 
-Book "1" -- "1" BibliographicalData : > has
-Magazine -- BibliographicalData : > has
+Item "*" -- "1" BibliographicalData : > has
 
 Buyer "1  " --- "1..*" DirectSale : > has
 Cart "0..1" -- "0..1" Transaction : > may become

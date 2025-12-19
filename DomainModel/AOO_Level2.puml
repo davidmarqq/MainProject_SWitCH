@@ -30,12 +30,13 @@ together {
 
 Magazine "0..1" -- "1" Item : > is an
 Book "0..1" -- "1" Item : > is an
-BibliographicalData "1" -- "*" Item
+/'BibliographicalData "1" - "*" Item'/
+Item --- BibliographicalData : > has
 
 }
 /' ------- Direct Sale -------- '/
 
-Buyer "1  " --- "1..*" DirectSale : > buys through
+Buyer "1  " -- "1..*" DirectSale : > buys through
 Cart "1" -- "1" Transaction : > can result
 DirectSale "*" --> "1" Cart : > added to
 
@@ -57,6 +58,7 @@ Buyer "1" - "1" User : > is a
 User "1..*" -- "1" Community
 Transaction "1" -- "1" LogisticService
 SupportService "0..1" -- "1" Listing
+LogisticService -- User
 
 /' ========== Concepts ============= '/
 

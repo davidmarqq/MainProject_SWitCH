@@ -1,9 +1,9 @@
 package isep.switchdev;
 
 import isep.switchdev.Enum.TypeOfBinding;
+import isep.switchdev.Enum.Condition;
 
 import java.util.List;
-import java.util.concurrent.locks.Condition;
 
 public class Item {
     // Attributes:

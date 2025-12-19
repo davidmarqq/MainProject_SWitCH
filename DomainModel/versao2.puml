@@ -37,10 +37,8 @@ note as L
 
 Listing -> L
 
-Book "0..1" -- "1" Item : > is a
-Magazine "0..1" -- "1" Item : > is a
-/'Item "1" - "0..1" Book : < is an
-Item "1" - "0..1" Magazine : < is an'/
+Book "0..1" -- "1" Item : > is an
+Magazine "0..1" -- "1" Item : > is an
 Item "*" -- "1" BibliographicalData : > has
 
 note as N

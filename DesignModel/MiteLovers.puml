@@ -1,0 +1,174 @@
+@startuml
+'https://plantuml.com/class-diagram
+Book --> "1" User : Seller
+Magazine --> "1" User : Seller
+
+User --> "1" Person : Is
+Book --> "1..*" Person : Has Authors
+Magazine --> "1..*" Person : Has Authors
+
+Sale --> "2" User :Buyer / Seller
+Sale --> "*" line_of_Sales : Contains
+
+Auction --> "1..2" User :Buyer / Seller
+Auction --> "1..*" line_of_Bids : Contains
+Auction --> "0..1" Sale : Results in
+
+line_of_Bids --> "1" Book : Contains
+line_of_Bids --> "1" Magazine : Contains
+
+line_of_Sales --> "1..*" Book : Contains
+line_of_Sales --> "1..*" Magazine : Contains
+
+User --> "1..2" Address : Contains
+User --> "1" phoneContact : Has
+
+User --> "1" Email : Has
+
+Publisher --> "1" Address : Has
+
+Magazine --> "1" Code : Contains
+
+Book --> "1" Title : Has
+Book --> "0..2" Code : Has
+Book --> "1" Language : Has
+Book --> "1" Publisher : Has
+Book --> "1..*" Genre : Has
+Book --> "1" Edition : Has
+Book --> "1" TypeOfBinding : Has
+Book --> "1" Condition : Has
+Book --> "1" Description : Has
+Book --> "1" 3D_Dimensions : Has
+
+class Book{
+- pages: int
+- price: double
+- weight: double
+- publicationDate: LocalDate
+- Auction || Purchase
+method()
+}
+
+class Magazine{
+- pages: int
+- price: double
+- weight: double
+- publicationDate: LocalDate
+- Auction || Purchase
+method()
+}
+
+class Person {
+- fullName: String
+- birthDate: LocalDate
+
+method()
+}
+
+class Sale {
+- date: LocalDate
+- double totalPrice
+method()
+}
+
+class Auction {
+- openDate: LocalDate
+- double initialPrice
+
+method()
+}
+
+class User {
+- loginName: String
+- password: String
+method()
+}
+
+class line_of_Sales {
+
+method()
+}
+
+class line_of_Bids {
+- currentBid: double
+method()
+}
+
+class Title {
+- title: String
+method()
+}
+
+class Code {
+- ISBN10: String
+- ISBN13: String
+- ISSN: String
+method()
+}
+
+class Language {
+- language: String
+method()
+}
+
+class Publisher {
+- nameEditor: String
+method()
+}
+
+class Genre {
+- genre[]: String
+method()
+}
+
+class Edition {
+- number: String
+size()
+}
+
+class TypeOfBinding {
+- type: String
+method()
+}
+
+class Condition {
+- type: String
+method()
+}
+
+class Description {
+- Description: String
+method()
+}
+
+class 3D_Dimensions {
+- length: double
+- width: double
+- height: double
+method()
+}
+
+class Address {
+- zipCode: String
+- city: String
+- street: String
+- number: String
+- country: String
+method()
+}
+
+class phoneContact {
+- phone: String
+- country: String
+-
+method()
+}
+
+class Email {
+- domain[]: String
+- @: String
+- userName: String
+method()
+}
+
+@enduml

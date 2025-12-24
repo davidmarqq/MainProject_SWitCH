@@ -1,0 +1,223 @@
+@startuml Doo
+'https://plantuml.com/class-diagram
+
+/' ========= '/
+Listing "1" ---> "0..1" Auction : can be
+Listing "1" ..> "0..1" SaleType : can be
+
+
+/' ========= '/
+BibliographicalData "1" ..> "*" Language : has
+BibliographicalData "1" ..> "1..*" Genre : has
+BibliographicalData "1" --> "1..*" Profile : has author
+
+
+/' ========= '/
+Item" 1" --> " 1" BibliographicalData : has
+Book "1" -> "1" Item : is a
+Book "1" --> "0..2" Code : has
+Book "*" -> "1" Publisher : has
+
+
+/' ========= '/
+Item "   1" --> "  1" BibliographicalData : has
+Magazine "1" -> "1" Item : is a
+Magazine "1" --> "0..1" Code : has
+Magazine "*" -> "1" Publisher : has
+
+
+/' ========= '/
+Item "1" --> "*" Picture : has
+Item "1" --> "1" Dimension : has
+Item "1" ..> "1" TypeOfBinding : has
+Item "1" ..> "1" Condition : has
+Item "1" --> "1" Listing : is listed at
+
+/' ========= '/
+Cart "1" o-- "*" Listing : has
+Cart "1" --> "1" User : buyer
+Cart "1" --> "0..1" Transaction : may lead to
+
+/' ========= '/
+Transaction "1" --> "1..*" User : seller
+Transaction "  1" --> "  1" User : buyer
+Transaction "1" --> "1" LogisticsServices : handled by
+Transaction "1" ..> "1" TransactionStatus : has
+
+Auction "1" --> "1" Transaction : may lead to
+
+/' ========= '/
+Bid "*" *-- "1" Auction : has
+Bid "1" --> "1" User : bidder
+
+/' ========= '/
+User "0..1" --> "1" Profile : has
+
+
+/' ========= '/
+Contact "1" *-- "1" Email : has
+Contact "1" *-- "1" Address : has
+
+Address "1" ..> "1" Country : has
+
+/' ========= '/
+Publisher "1" -> "1" Contact : has
+
+
+/' ========= '/
+Community "1" --> "*" User : is shaped by
+
+/' ========= '/
+SupportService --> User : aids
+SupportService --> Transaction : aids user in
+
+
+class Book {
+}
+
+class Magazine {
+}
+
+class User {
+    - userName:String
+}
+
+class Profile {
+    name:String
+    isAuthor:boolean
+}
+
+
+class Item {
+    - weight:int
+    - edition:String
+
+}
+
+class BibliographicalData {
+    - publicationDate:LocalDate
+    - numberOfPages:int
+    - chunksOfText: String
+}
+
+class Listing {
+    - price:double
+    - shortDescription:String
+    - listingTitle:String
+}
+
+
+class Cart {
+    - buyer:User
+}
+
+
+class Auction {
+    - buyOutPrice:double
+    - initialDate:LocalDateTime
+    - finalDate:LocalDateTime
+    - initialPrice:double
+
+    /' currentBidder:User... sim ou não????'/
+}
+
+class Bid {
+    - value:double
+}
+
+class Transaction {
+    totalAmount:double
+    status:TransactionStatus
+}
+
+
+class LogisticsServices {
+}
+
+class SupportService {
+}
+
+class Community{
+}
+
+class Dimension {
+    - length:double
+    - height:double
+    - width:double
+}
+
+enum Language {
+    PORTUGUESE
+    ENGLISH
+    SPANISH
+}
+
+class Code {
+    - isbn10:String
+    - isbn13:String
+    - issn:String
+}
+
+class Publisher {
+    - name:String
+    - vatNumber:String
+}
+
+class Address {
+    - street:String
+    - number:String
+    - zipCode:String
+}
+
+enum Country {
+    PORTUGAL
+    SPAIN
+    FRANCE
+    GERMANY
+}
+
+class Contact {
+    - phoneNum:String
+    - extension:String
+}
+
+class Email {
+    - userName:String
+    - domain:String
+}
+
+enum Genre {
+    ADVENTURE
+    ROMANCE
+    FICTION
+}
+
+enum TypeOfBinding {
+    HARDBACK
+    PAPERBACK
+
+}
+
+enum SaleType {
+    DIRECT_SALE
+    AUCTION
+}
+
+enum Condition {
+    NEW
+    LIKE_NEW
+    VERY_GOOD
+    GOOD
+    ACCEPTABLE
+}
+
+enum TransactionStatus {
+    PENDING
+    PAID
+    SHIPPED
+    COMPLETED
+    CANCELED
+}
+
+
+@enduml

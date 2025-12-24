@@ -1,0 +1,63 @@
+# OO Analysis
+
+##  Glossary
+
+### Auction:
+By "Auction", in our business, we specify a sale method where one or multiple users can offer bids (see "Bid" below) for a specific item
+while the auction is active. When the auction ends, the user with the highest bid will be the one who acquires the item.
+
+### Bid: 
+A monetary offer for an auctioned item.
+
+### Bidder: 
+Refers to a user who is partaking in an auction.
+
+### Book: 
+A specific type of physical Item. Per business stipulations, "Books published since 1970 are expected to have an ISBN 10-digit code (13-digit since 2007)".
+Alternatively, "Some books may have both 10-digit and 13-digit codes" or none of the above.
+
+### Buyer: 
+A User who engages with a Seller to acquire a listed item strictly through a DirectSale.
+
+### Cart: 
+The haul of items a User picks out from one or multiple Listings (only DirectSales). The Cart may also be empty.
+
+### Community: 
+The overarching relationships established by the digital group created through and by MiteLovers' Users.
+
+### DirectSale: 
+Our business' other sale method, besides Auction. The Listings available for DirectSale on a User's Cart can be purchased directly from Sellers
+without going into an Auction. DirectSale Listings have a fixed price.
+
+### Item: 
+The attributes of the physical copy found in a Listing. This may include weight, number of pages and dimensions.
+
+### ItemDescription (BibliographicalData): 
+The literary information of an Item. Regardless of the differences between different physical copies
+found across Listings, the data found in ItemDescription always points to the same Item. (Example: despite different editions or condition, The Hobbit
+is always written by JRR Tolkien and released in 1937).
+It represents the literary work as an immutable concept, i.e, what is found in the catalog. 
+
+### Listing: 
+The Item a User, as a Seller, has available for sale, either through Auction or DirectSale.
+
+### LogisticServices: 
+External services to our business that aid in distribution and delivery of purchased Items (to be updated).
+
+### Magazine: 
+The other type of Item, besides Book. Per business stipulations, "Magazines published since 1976 are expected to have an International
+Standard Serial Number (ISSN) code" or no code at all.
+
+### Seller: 
+A User who has a single or multiples Listings with Items on offer.
+
+### SupportService: 
+Complementary services such as Appraisal Services and others (to be disclosed in the near future).
+
+### Transaction: 
+The act where Users exchange a listed Item for the agreed upon price. A Transaction may be finalized
+via multiple means (to be disclosed in the near future).
+
+### User: 
+Per business stipulations, "A non-registered user can search and browse sales". However, "only registered users can see the prices
+and buy or place bids". As such, a registered User may occupy the role of a Buyer, Seller or Bidder.

@@ -8,4 +8,6 @@ Ideniticar os users e os autores. Sendo possivel utilizar o perfil do usuário p
 
 Verificar se podemos deixar como String ou se criamos uma lista de comparação. 
 
-## 3. 
+## 3. Auction
+
+Um user pode recusar ficar com um item caso ganhe a auction?
